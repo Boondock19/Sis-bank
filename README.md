@@ -1,24 +1,5 @@
-# README
+# Sis-bank
+Ruby on rails project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Projecto con el objetivo de crear un CRUD para la creacion de usuarios, sin autenticacion de los mismos, unicamente para registro y control de una cartera de clientes. 
+Se realizo con ruby y el framework Rails, es decir, ruby on rails.Adicionalmente la basa de de datos utulizada es postgresql, para los estilos se utilizo bootstrap con una configuracion a traves de los CDNs. 
