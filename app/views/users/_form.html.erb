@@ -1,5 +1,6 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
+  
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
@@ -10,7 +11,6 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label :indentificationNumber, style: "display: block" %>
     <%= form.text_field :indentificationNumber %>
@@ -48,7 +48,8 @@
 
   <div>
     
-    <%= select_tag "user[person_type_id]", options_for_select(letters.map { |l| [l.letter,l.id]})%>
+    <%# <%= select_tag "user[person_type_id]", options_for_select( letters.map { |l| [l.letter,l.id]}) %>
+    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), include_blank: "Select Id letter")%>
   </div>
 
   <div>

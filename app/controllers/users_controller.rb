@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, :set_select_collections, only: %i[ show edit update destroy ]
 
   
   # GET /users or /users.json
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @letters = PersonType.all
   end
 
   # GET /users/1/edit
@@ -23,6 +22,7 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
+    puts user_params.inspect
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -68,5 +68,9 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:indentificationNumber, :startDate, :endDate, :name, :email, :mainNumber, :optNumber, :person_type_id)
+    end
+
+    def set_select_collections
+      @letters = PersonType.all
     end
 end
