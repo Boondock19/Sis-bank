@@ -1,10 +1,11 @@
 <%= form_with(model: user) do |form| %>
   <% if user.errors.any? %>
-  
+    <%= user.errors.include?(:indentificationNumber) %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
+
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -12,56 +13,56 @@
     </div>
   <% end %>
 
-<div>
+<div class="mb-3">
     
-    <%# <%= select_tag "user[person_type_id]", options_for_select( letters.map { |l| [l.letter,l.id]}) %>
-    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), include_blank: "Select Id letter")%>
+    <label class="form-label">Document Id Letter</label>
+    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), 
+    include_blank: "Select Id letter",  class: "form-select")%>
   </div>
 
-  <div>
-    <%= form.label :indentificationNumber, style: "display: block" %>
-    <%= form.text_field :indentificationNumber %>
+  <div class="mb-3">
+    <%= form.label :indentificationNumber, class: "form-label" %>
+    <%= form.text_field :indentificationNumber, class: "form-control"%>
   </div>
 
-  <div>
-    <%= form.label :startDate, style: "display: block" %>
-    <%= form.date_field :startDate %>
+  <div class="mb-3">
+    <%= form.label :startDate, class: "form-label" %>
+    <%= form.date_field :startDate,class: "form-control"%>
   </div>
 
-  <div>
-    <%= form.label :endDate, style: "display: block" %>
-    <%= form.date_field :endDate %>
+  <div class="mb-3">
+    <%= form.label :endDate, class: "form-label" %>
+    <%= form.date_field :endDate , class: "form-control"%>
   </div>
 
-  <div>
-    <%= form.label :name, style: "display: block", id: "name-label" %>
-    <%= form.text_field :name %>
+  <div class="mb-3">
+    <%= form.label :name, id: "name-label" , class: "form-label"%>
+    <%= form.text_field :name , class: "form-control"%>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="mb-3">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.text_field :email , class: "form-control"%>
   </div>
 
-  <div>
-    <%= form.label :mainNumber, style: "display: block" %>
-    <%= form.text_field :mainNumber %>
+  <div class="mb-3">
+    <%= form.label :mainNumber, class: "form-label" %>
+    <%= form.text_field :mainNumber ,class: "form-control" %>
   </div>
 
-  <div>
-    <%= form.label :optNumber, style: "display: block" %>
-    <%= form.text_field :optNumber %>
+  <div class="mb-3">
+    <%= form.label :optNumber, class: "form-label" %>
+    <%= form.text_field :optNumber, class: "form-control" %>
   </div>
 
   
 
   <div>
-    <%= form.submit %>
+    <%= form.submit  class: "btn btn-outline-success" %>
   </div>
 <% end %>
 
 <script>
-  console.log("Hello from users/_form.html.erb")
   let select = document.querySelector("#user_person_type_id")
   let name = document.querySelector("#name-label")
   let letter = ''
@@ -76,7 +77,5 @@
       name.innerHTML = "Name"
     }
   })
-
-
 
 </script>
