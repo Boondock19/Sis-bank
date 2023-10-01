@@ -1,58 +1,109 @@
 <%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <%= user.errors.include?(:indentificationNumber) %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  
 <div class="mb-3">
-    
     <label class="form-label">Document Id Letter</label>
-    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), 
-    include_blank: "Select Id letter",  class: "form-select")%>
+     <% if user.errors.include?(:person_type_id) %>
+      <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), 
+        include_blank: "Select Id letter",  class: "form-select is-invalid")%>
+      <div class="text-danger">
+        <%= user.errors[:person_type_id].first %>
+      </div>
+    <%else%>
+        <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), 
+        include_blank: "Select Id letter",  class: "form-select")%>
+    <%end%>
+    
+</div>
+
+  <div class="mb-3">
+    <% if user.errors.include?(:indentificationNumber) %>
+      <%= form.label :indentificationNumber, class: "form-label" %>
+      <%= form.text_field :indentificationNumber, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:indentificationNumber].first %>
+      </div>
+    <%else%>
+      <%= form.label :indentificationNumber, class: "form-label" %>
+      <%= form.text_field :indentificationNumber, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :indentificationNumber, class: "form-label" %>
-    <%= form.text_field :indentificationNumber, class: "form-control"%>
+     <% if user.errors.include?(:startDate) %>
+      <%= form.label :startDate, class: "form-label" %>
+      <%= form.date_field :startDate, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:startDate].first %>
+      </div>
+    <%else%>
+      <%= form.label :startDate, class: "form-label" %>
+      <%= form.date_field :startDate, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :startDate, class: "form-label" %>
-    <%= form.date_field :startDate,class: "form-control"%>
+     <% if user.errors.include?(:endDate) %>
+      <%= form.label :endDate, class: "form-label" %>
+      <%= form.date_field :endDate, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:endDate].first %>
+      </div>
+    <%else%>
+      <%= form.label :endDate, class: "form-label" %>
+      <%= form.date_field :endDate, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :endDate, class: "form-label" %>
-    <%= form.date_field :endDate , class: "form-control"%>
+    <% if user.errors.include?(:name) %>
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:name].first %>
+      </div>
+    <%else%>
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :name, id: "name-label" , class: "form-label"%>
-    <%= form.text_field :name , class: "form-control"%>
+    <% if user.errors.include?(:email) %>
+      <%= form.label :email, class: "form-label" %>
+      <%= form.text_field :email, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:email].first %>
+      </div>
+    <%else%>
+      <%= form.label :email, class: "form-label" %>
+      <%= form.text_field :email, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :email, class: "form-label" %>
-    <%= form.text_field :email , class: "form-control"%>
+    <% if user.errors.include?(:mainNumber) %>
+      <%= form.label :mainNumber, class: "form-label" %>
+      <%= form.text_field :mainNumber, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:mainNumber].first %>
+      </div>
+    <%else%>
+      <%= form.label :mainNumber, class: "form-label" %>
+      <%= form.text_field :mainNumber, class: "form-control"%>
+    <%end%>
   </div>
 
   <div class="mb-3">
-    <%= form.label :mainNumber, class: "form-label" %>
-    <%= form.text_field :mainNumber ,class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :optNumber, class: "form-label" %>
-    <%= form.text_field :optNumber, class: "form-control" %>
+     <% if user.errors.include?(:optNumber) %>
+      <%= form.label :optNumber, class: "form-label" %>
+      <%= form.text_field :optNumber, class: "form-control is-invalid"%>
+      <div class="text-danger">
+        <%= user.errors[:optNumber].first %>
+      </div>
+    <%else%>
+      <%= form.label :optNumber, class: "form-label" %>
+      <%= form.text_field :optNumber, class: "form-control"%>
+    <%end%>
   </div>
 
   
