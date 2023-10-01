@@ -63,19 +63,21 @@
 <% end %>
 
 <script>
-  let select = document.querySelector("#user_person_type_id")
-  let name = document.querySelector("#name-label")
-  let letter = ''
-  let enterpriseLetters = ["J", "G"]
-  select.addEventListener("change", (event) => {
-    let index = event.target.selectedIndex
-    letter = (event.target.options[index].text)
+ 
+(function(){
+      let select = document.querySelector("#user_person_type_id")
+      let name = document.querySelector("#name-label")
+      let letter = ''
+      let enterpriseLetters = ["J", "G"]
+      select.addEventListener("change", (event) => {
+        let index = event.target.selectedIndex
+        letter = (event.target.options[index].text)
 
-    if (enterpriseLetters.includes(letter)) {
-      name.innerHTML = "Enterprise Name"
-    } else {
-      name.innerHTML = "Name"
-    }
-  })
-
+        if (enterpriseLetters.includes(letter)) {
+          name.innerHTML = "Enterprise Name"
+        } else {
+          name.innerHTML = "Name"
+        }
+      })
+    })();
 </script>
