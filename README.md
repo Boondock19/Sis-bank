@@ -2,9 +2,9 @@
 ## Ruby on rails project
 
 Projecto con el objetivo de crear un CRUD para la creacion de usuarios, sin autenticacion de los mismos, unicamente para registro y control de una cartera de clientes. 
-Se realizo con ruby y el framework Rails, es decir, ruby on rails. Adicionalmente la basa de de datos utulizada es postgresql, para los estilos se utilizo bootstrap con una configuracion a traves de los CDNs. 
+Se realizo con ruby y el framework Rails, es decir, ruby on rails. Adicionalmente la base  de datos utilizada es postgresql, para los estilos se utilizo bootstrap con una configuracion a traves de los CDNs. 
 
-Sobre el versionamiento ruby y el framework rails, se utilizo la version 3.2.1 de ruby y la version 7.0.8 de rails.
+Sobre el versionamiento de ruby y el framework rails, se utilizo la version **3.2.1** de ruby y la version **7.0.8** de rails.
 
 ### Nota importantes para poder correr el proyecto:
 1. Se debe tener instalado ruby y rails en la version mencionada anteriormente.
