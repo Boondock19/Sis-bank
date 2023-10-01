@@ -1,3 +1,10 @@
+<%#
+  form partial usado para crear usuarios o editarlos, se realizo un estilo sencillo de bootstrap
+  con cambio de estilos al recibir feedback de las validaciones del modelo, para darle informacion
+  al usuario sobre su input en el form.
+ %>
+
+
 <%= form_with(model: user) do |form| %>
   
 <div class="mb-3">
@@ -116,6 +123,8 @@
 <script>
  
 (function(){
+  // Script utilizado para cambiar el valor del label del campo name, de manera
+  // dinamica segun el valor del tipo de persona.
       let select = document.querySelector("#user_person_type_id")
       let name = document.querySelector("#name-label")
       let letter = ''

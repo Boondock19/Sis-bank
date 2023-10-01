@@ -7,12 +7,11 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     @users = User.all
-    @personTypes = PersonType.all
-
   end
 
   # GET /users/1 or /users/1.json
   def show
+    @personTypeJuridic = ['J','G']
   end
 
   # GET /users/new

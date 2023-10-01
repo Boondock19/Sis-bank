@@ -1,6 +1,19 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
+<%# 
+
+  Vista de todos los usuarios, se decidio usar el componente de tabla de bootstrap
+  para  mostar la informacion de manera organizada y dale opciones al usuario para 
+  interactuar con la interfaz.
+ %>
+
+
+<% unless notice.nil? %>
+  <div class="alert alert-success mt-3" role="alert">
+    <%= notice %>
+  </div>
+<%end%>
+
+<h1 class="mt-3">Users</h1>
 
 
 <div class="table-responsive">
@@ -13,13 +26,13 @@
         <th scope="col">Doc End Data</th>
         <th scope="col">Email</th>
         <th scope="col">Main Number</th>
-        <th scope="col">Optional Number</th>
+        <th scope="col">Secondary Number</th>
         <th scope="col">Doc Type</th>
         <th scope="col">See User Detail</th>
         <th scope="col">Delete User</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
     <% @users.each do |user| %>
       <tr>
         <td><%= user.indentificationNumber %></td>

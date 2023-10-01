@@ -1,10 +1,47 @@
-<p style="color: green"><%= notice %></p>
+<%# 
+  Vista para mostrar detalles de un usuario, se utilizo el component card de bootstrap
+  por su claro despliegue de la informacion. Existen un par de condicionales en el codigo
+  para saber que elementos de html o del DOM se debe renderizar segun los valores del tipo
+  de persona y de si posee o no un numero secundario de telefono.
 
-<%= render @user %>
+ %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) , class: "btn btn-outline-success" %> 
-  <%= link_to "Back to users", users_path , class: "btn btn-outline-dark mx-3"%>
 
-  <%= button_to "Destroy this user", @user, method: :delete , class: "btn btn-outline-danger mt-3"%>
+<% unless notice.nil? %>
+  <div class="alert alert-success mt-3" role="alert">
+    <%= notice %>
+  </div>
+<%end%>
+
+<div class="card mt-3">
+  <h5 class="card-header">User <%= @user.name%> details</h5>
+  <div class="card-body">
+  <p class="card-text"><strong>Person type: </strong><%= @user.person_type.letter %> 
+    <% if @personTypeJuridic.include?(@user.person_type.letter)%>
+      <span> (Legal entity)</span>
+    <%else%>
+      <span>(Natural entity)</span>
+    <%end%>
+  </p>
+    <p class="card-text"><strong>Id number: </strong><%= @user.indentificationNumber%></p>
+    <p class="card-text"><strong>Document start date: </strong><%= @user.startDate.strftime("%d/%m/%Y")%></p>
+    <p class="card-text"><strong>Doccument end date: </strong><%= @user.endDate.strftime("%d/%m/%Y")%></p>
+    <p class="card-text"><strong>Name: </strong><%= @user.name%></p>
+    <p class="card-text"><strong>Email: </strong><%= @user.email%></p>
+    <p class="card-text"><strong>Main number: </strong><%= @user.mainNumber%></p>
+    <% if @user.optNumber != "" %>
+      <p class="card-text"><strong>Secondary number: </strong><%= @user.optNumber%></p>
+    <%else%>
+      <p class="card-text"><strong>Secondary number: </strong>Doesnt have one registered </p>
+    <%end%>
+    
+    <div>
+      <%= link_to "Edit this user", edit_user_path(@user) , class: "btn btn-outline-success" %> 
+      <%= link_to "Back list of users", users_path , class: "btn btn-outline-dark mx-3"%>
+
+      <%= button_to "Destroy this user", @user, method: :delete , class: "btn btn-outline-danger mt-3"%>
+    </div>
+  </div>
 </div>
+
+
