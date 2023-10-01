@@ -2,9 +2,13 @@ class UsersController < ApplicationController
   before_action :set_user, :set_select_collections, only: %i[ show edit update destroy ]
 
   
+ 
+
   # GET /users or /users.json
   def index
     @users = User.all
+    @personTypes = PersonType.all
+
   end
 
   # GET /users/1 or /users/1.json
@@ -22,7 +26,6 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    puts user_params.inspect
     @user = User.new(user_params)
 
     respond_to do |format|

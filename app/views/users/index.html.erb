@@ -2,13 +2,54 @@
 
 <h1>Users</h1>
 
-<div id="users">
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Identification Number</th>
+      <th scope="col">Name</th>
+      <th scope="col">Doc Start Date</th>
+      <th scope="col">Doc End Data</th>
+      <th scope="col">Email</th>
+      <th scope="col">Main Number</th>
+      <th scope="col">Optional Number</th>
+      <th scope="col">Doc Type</th>
+      <th scope="col">See User Detail</th>
+      <th scope="col">Delete User</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+    <tr>
+      <td><%= user.indentificationNumber %></td>
+      <td><%= user.name %></td>
+      <td><%= user.startDate.strftime("%d/%m/%Y") %></td>
+      <td><%= user.endDate.strftime("%d/%m/%Y") %></td>
+      <td><%= user.email %></td>
+      <td><%= user.mainNumber %></td>
+      <td>
+        <% if user.optNumber != ""  %>
+          <%= user.optNumber %>
+        <% else %>
+          <%= "-----" %>
+        <% end %>
+      </td>
+      <td><%= @personTypes.where(id: user.person_type_id).first.attributes.values[1] %></td>
+      <td>
+        <%= link_to "Show this user", user %>
+      </td>
+      <td>
+        <%= button_to "Destroy this user", user, method: :delete %>
+      </td>
+    </tr>
+    
   <% end %>
+  </tbody>
+</table>
+
+<div id="users">
+  
 </div>
 
 <%= link_to "New user", new_user_path %>
