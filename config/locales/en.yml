@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+  attributes:
+    user:
+      indentificationNumber: "Id Number"
+      startDate: "Document Start Date"
+      endDate: "Document End Date"
+      mainNumber: "Main Number"
+      optNumber: "Secondary Number"
+

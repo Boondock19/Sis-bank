@@ -35,7 +35,7 @@
           <%= "-----" %>
         <% end %>
       </td>
-      <td><%= @personTypes.where(id: user.person_type_id).first.attributes.values[1] %></td>
+      <td><%= user.person_type.letter %></td>
       <td>
         <%= link_to "Show this user", user %>
       </td>
