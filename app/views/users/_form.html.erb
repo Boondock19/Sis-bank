@@ -11,6 +11,13 @@
       </ul>
     </div>
   <% end %>
+
+<div>
+    
+    <%# <%= select_tag "user[person_type_id]", options_for_select( letters.map { |l| [l.letter,l.id]}) %>
+    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), include_blank: "Select Id letter")%>
+  </div>
+
   <div>
     <%= form.label :indentificationNumber, style: "display: block" %>
     <%= form.text_field :indentificationNumber %>
@@ -27,7 +34,7 @@
   </div>
 
   <div>
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name, style: "display: block", id: "name-label" %>
     <%= form.text_field :name %>
   </div>
 
@@ -46,13 +53,30 @@
     <%= form.text_field :optNumber %>
   </div>
 
-  <div>
-    
-    <%# <%= select_tag "user[person_type_id]", options_for_select( letters.map { |l| [l.letter,l.id]}) %>
-    <%= select_tag("user[person_type_id]", options_from_collection_for_select(PersonType.all, :id, :letter), include_blank: "Select Id letter")%>
-  </div>
+  
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  console.log("Hello from users/_form.html.erb")
+  let select = document.querySelector("#user_person_type_id")
+  let name = document.querySelector("#name-label")
+  let letter = ''
+  let enterpriseLetters = ["J", "G"]
+  select.addEventListener("change", (event) => {
+    let index = event.target.selectedIndex
+    letter = (event.target.options[index].text)
+
+    if (enterpriseLetters.includes(letter)) {
+      name.innerHTML = "Enterprise Name"
+    } else {
+      name.innerHTML = "Name"
+    }
+  })
+
+
+
+</script>
