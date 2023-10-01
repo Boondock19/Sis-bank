@@ -7,9 +7,9 @@ Se realizo con ruby y el framework Rails, es decir, ruby on rails. Adicionalment
 Sobre el versionamiento de ruby y el framework rails, se utilizo la version **3.2.1** de ruby y la version **7.0.8** de rails.
 
 ### Nota importantes para poder correr el proyecto:
-1. Se debe tener instalado ruby y rails en la version mencionada anteriormente.
-2. Se debe tener instalado postgresql.
-3. Correr el comando bundle install para instalar las gemas necesarias para el proyecto.
+1. Se debe tener instalado **ruby y rails** en la version mencionada anteriormente.
+2. Se debe tener instalado y configurado **postgresql**.
+3. Correr el comando **bundle install** para instalar las gemas necesarias para el proyecto.
 4. Modificar el archivo **database.yml** con los datos de un usuario de postgresql con permisos
 suficientes para manipular y crear bases de datos, en las seccion de development (cambiar valores de username y password).
 5. Correr el comando **rake db:create** para crear la base de datos.
